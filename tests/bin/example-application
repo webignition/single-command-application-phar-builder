@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace webignition\SingleCommandApplicationPharBuilder\Tests\Bin;
+
+$pharPath = \Phar::running(false);
+
+if ('' === $pharPath) {
+    require 'vendor/autoload.php';
+    $projectRootPath = realpath(__DIR__ . '/..');
+} else {
+    require 'phar://app.phar/vendor/autoload.php';
+    $projectRootPath = realpath(dirname($pharPath));
+}
+
+echo 'Example Application Output';

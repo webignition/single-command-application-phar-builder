@@ -24,7 +24,7 @@
     "scripts": {
         "cs": "./vendor/bin/ecs check --ansi",
         "static-analysis": "./vendor/bin/phpstan analyse --ansi",
-        "test": "./vendor/bin/phpunit --colors=always",
+        "test": "@php -dphar.readonly=0 ./vendor/bin/phpunit --colors=always",
         "ci": [
             "@cs",
             "@static-analysis",
