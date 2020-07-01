@@ -36,7 +36,7 @@ class Builder
         $this->sourcePaths = $sourcePaths;
     }
 
-    public function compile(): void
+    public function build(): string
     {
         $phar = new Phar($this->pharPath, 0, $this->alias);
         $phar->startBuffering();
@@ -52,6 +52,8 @@ class Builder
 
         $phar->setStub($this->createStub());
         $phar->stopBuffering();
+
+        return (string) realpath($this->baseDirectory . '/' . $this->pharPath);
     }
 
     private function addBinCompiler(Phar $phar): void
