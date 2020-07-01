@@ -1,0 +1,49 @@
+{
+    "name": "webignition/single-command-application-phar-builder",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/webignition/single-command-application-phar-builder",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Cram",
+            "email": "webignition@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "webignition\\SingleCommandApplicationPharBuilder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "webignition\\SingleCommandApplicationPharBuilder\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "cs": "./vendor/bin/ecs check --ansi",
+        "static-analysis": "./vendor/bin/phpstan analyse --ansi",
+        "test": "./vendor/bin/phpunit --colors=always",
+        "ci": [
+            "@cs",
+            "@static-analysis",
+            "@test"
+        ]
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "phpunit/phpunit": "^9.2",
+        "symfony/finder": "^5.1"
+    },
+    "require-dev": {
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.0",
+        "squizlabs/php_codesniffer": "3.*",
+        "symplify/easy-coding-standard": "^8.0"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
