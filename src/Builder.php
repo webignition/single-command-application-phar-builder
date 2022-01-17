@@ -22,9 +22,6 @@ class Builder
     private array $sourcePaths;
 
     /**
-     * @param string $baseDirectory
-     * @param string $pharPath
-     * @param string $binPath
      * @param string[] $sourcePaths
      */
     public function __construct(string $baseDirectory, string $pharPath, string $binPath, array $sourcePaths)
@@ -78,7 +75,8 @@ class Builder
             ->exclude('Tests')
             ->exclude('tests')
             ->exclude('docs')
-            ->in($paths);
+            ->in($paths)
+        ;
 
         return $finder->getIterator();
     }
@@ -89,9 +87,9 @@ class Builder
 #!/usr/bin/env php
 <?php
 
-Phar::mapPhar('$this->alias');
+Phar::mapPhar('{$this->alias}');
 
-require 'phar://$this->alias/$this->binPath';
+require 'phar://{$this->alias}/{$this->binPath}';
 
 __HALT_COMPILER();
 
