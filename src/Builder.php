@@ -11,26 +11,18 @@ use Symfony\Component\Finder\Finder;
 
 class Builder
 {
-    private string $baseDirectory;
-    private string $pharPath;
     private string $alias;
-    private string $binPath;
-
-    /**
-     * @var string[]
-     */
-    private array $sourcePaths;
 
     /**
      * @param string[] $sourcePaths
      */
-    public function __construct(string $baseDirectory, string $pharPath, string $binPath, array $sourcePaths)
-    {
-        $this->baseDirectory = $baseDirectory;
-        $this->pharPath = $pharPath;
+    public function __construct(
+        private string $baseDirectory,
+        private string $pharPath,
+        private string $binPath,
+        private array $sourcePaths
+    ) {
         $this->alias = basename($pharPath);
-        $this->binPath = $binPath;
-        $this->sourcePaths = $sourcePaths;
     }
 
     public function build(): string
@@ -63,7 +55,7 @@ class Builder
     /**
      * @param string[] $paths
      *
-     * @return Iterator<SplFileInfo>
+     * @return Iterator<string, SplFileInfo>
      */
     private function createFilesFinder(array $paths): Iterator
     {
